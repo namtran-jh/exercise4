@@ -1,3 +1,7 @@
+<!-- RegExp for searching all strings occurs between double quotation marks and those strings must have the following format:
+        1. first letter is UPPERCASE                2. letters go after dots in strings is lowercase
+        3. no whitespace                            4. not include ".., !, @, #" -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +13,27 @@
 </head>
 
 <body>
+    <div id="inputArea">
+        <input id="input" type="text" value="" placeholder="Input here..." />
+        <input id="magicBtn" type="button" value="Do magic things" />
+    </div>
 
+    <p id="result"></p>
+
+    <div>
+        <a href="./regexp1.html">RegExp 1</a>
+        <a href="./regexp2.html">RegExp 2</a>
+    </div>
+
+    <script>
+        document.getElementById("magicBtn").onclick = function() {
+            const input = document.getElementById("input").value;
+            const regexp = /(?=[A-Z0-9])(.*)((?<=[.])[a-z0-9])([^\.\!\@\#])/gm;
+
+            const result = input.match(regexp);
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
 </body>
 
 </html>

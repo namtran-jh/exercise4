@@ -1,3 +1,5 @@
+<!-- RegExp for searching words appearing between word "nabati" (ex: sdF4nabati12Gb#cDe%fnabati12=gnabati0129) -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,33 @@
 </head>
 
 <body>
+    <div id="inputArea">
+        <input id="input" type="text" value="" placeholder="Input here..." />
+        <input id="magicBtn" type="button" value="Do magic things" />
+    </div>
 
+    <p id="result"></p>
+
+    <div>
+        <a href="./regexp1.html">RegExp 1</a>
+        <a href="./regexp3.html">RegExp 3</a>
+    </div>
+
+    <script>
+        document.getElementById("magicBtn").onclick = function() {
+            const input = document.getElementById("input").value;
+            const regexp = /nabati(.*)nabati/gim;
+
+            const strWith = input.match(regexp);
+            if (strWith === null) {
+                document.getElementById("result").innerHTML = "Null";
+            } else {
+                const arrayStrWithout = strWith[0].split("nabati");
+                const result = arrayStrWithout.filter(val => val !== "");
+                document.getElementById("result").innerHTML = result;
+            }
+        }
+    </script>
 </body>
 
 </html>

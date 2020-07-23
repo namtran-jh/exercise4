@@ -1,3 +1,5 @@
+<!-- RegExp for identifying special character (normal character: alphabet and number) -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,27 @@
 </head>
 
 <body>
+    <div id="inputArea">
+        <input id="input" type="text" value="" placeholder="Input here..." />
+        <input id="magicBtn" type="button" value="Do magic things" />
+    </div>
 
+    <p id="result"></p>
+
+    <div>
+        <a href="./regexp2.html">RegExp 2</a>
+        <a href="./regexp3.html">RegExp 3</a>
+    </div>
+
+    <script>
+        document.getElementById("magicBtn").onclick = function() {
+            const input = document.getElementById("input").value;
+            const regexp = /\W/gim; // [^A-Za-z0-9]
+
+            const result = input.match(regexp);
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
 </body>
 
 </html>
