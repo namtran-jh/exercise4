@@ -71,3 +71,7 @@ a:hover {
     font-weight: lighter;
     padding: 30 50px;
 }
+
+#result {
+    word-wrap: break-word;
+}
