@@ -1,7 +1,7 @@
 <!-- RegExp for searching all strings occurs between double quotation marks and those strings must have the following format:
         1. first letter is UPPERCASE                2. letters go after dots in strings is lowercase
         3. no whitespace                            4. not include ".., !, @, #"
-        Ex: mgnd ad12F "S@sad1" "add123fs"d 6"Fgj.435j" "Hf24 trT"  adw"11 23-=da"dad "Rad.t2342"34 -->
+        Ex: m"Ogdf..gs231*"gnd "U*()fsad123.h" ad12F "S@sad1" "add123fs"d 6"Fgj.435j" "Hf24 trT"  adw"11 23-=da"dad "Rad.t2342"34 -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <p id="regexp"> [RegExp3] RegExp for searching all strings occurs between double quotation marks and those strings must have the following format:
+        <b>1. first letter is UPPERCASE</b> | <b>2. letters go after dots in strings is lowercase</b> |
+        <b>3. no whitespace</b> | <b>4. not include ".., !, @, #"</b> </p>
+
     <div id="inputArea">
         <input id="input" type="text" value="" placeholder="Input here..." />
         <input id="magicBtn" type="button" value="Do magic things" />
@@ -46,7 +50,8 @@
                     }
                 }
                 if (availableStr === true) {
-                    result.push(eachStr.replace(/\"/g, ""));
+                    let finalStr = eachStr.substr(1, eachStr.length - 2);
+                    result.push(finalStr);
                 }
             })
             document.getElementById("result").innerHTML = result;
