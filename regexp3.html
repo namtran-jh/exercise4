@@ -36,7 +36,6 @@
             const regexp = /\"(?=[A-Z])[^#@!\s]*\"/gm;
 
             const str = input.match(regexp);
-            console.log(str)
             let result = [];
             str.forEach(eachStr => {
                 let availableStr = true;
@@ -49,9 +48,41 @@
                         }
                     }
                 }
+                // Each String verified by RegExp
+                console.log(eachStr, eachStr.length);
+
                 if (availableStr === true) {
-                    let finalStr = eachStr.substr(1, eachStr.length - 2);
-                    result.push(finalStr);
+                    // let finalStr = eachStr.substr(1, eachStr.length - 2);
+                    // result.push(finalStr);
+                    let arrDoubleQuotes = [];
+                    for (let char = 0; char < eachStr.length; char++) {
+                        if (eachStr[char] === '"') {
+                            arrDoubleQuotes.push(char);
+                        }
+                    }
+
+                    // Array of available position double quoting mark
+                    console.log(arrDoubleQuotes)
+
+                    if (arrDoubleQuotes.length > 2) {
+                        for (let i = 0; i < arrDoubleQuotes.length - 1; i++) {
+                            if (eachStr[arrDoubleQuotes[i] + 1].match(/[A-Z]/)) {
+                                for (let j = i + 1; j < arrDoubleQuotes.length; j++) {
+                                    console.log(arrDoubleQuotes[i], arrDoubleQuotes[j]);
+                                    let head = arrDoubleQuotes[i] + 1;
+                                    let tail = arrDoubleQuotes[j];
+                                    if (head <= tail) {
+                                        let tmp = eachStr.substring(head, tail);
+                                        console.log(tmp);
+                                        result.push(tmp);
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        let finalStr = eachStr.substring(1, eachStr.length - 1);
+                        result.push(finalStr);
+                    }
                 }
             })
             document.getElementById("result").innerHTML = result;
