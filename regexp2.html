@@ -36,7 +36,16 @@
             } else {
                 const arrayStrWithout = strWith[0].split("nabati");
                 const result = arrayStrWithout.filter(val => val !== "");
-                document.getElementById("result").innerHTML = result;
+
+                let listSubStr = "";
+                for (let i = 0; i < result.length; i++) {
+                    if (i === result.length - 1) {
+                        listSubStr += result[i];
+                    } else {
+                        listSubStr += result[i] + "<span style='color: black'> • </span>";
+                    }
+                }
+                document.getElementById("result").innerHTML = listSubStr;
             }
         }
     </script>

@@ -30,8 +30,22 @@
             const input = document.getElementById("input").value;
             const regexp = /\W/gim; // [^A-Za-z0-9]
 
-            const result = input.match(regexp);
-            document.getElementById("result").innerHTML = result;
+            let result = input.match(regexp);
+            result.forEach((value, index, array) => {
+                if (value === " ") {
+                    result[index] = "[__]";
+                }
+            });
+
+            let listSubStr = "";
+            for (let i = 0; i < result.length; i++) {
+                if (i === result.length - 1) {
+                    listSubStr += result[i];
+                } else {
+                    listSubStr += result[i] + "<span style='color: black'> • </span>";
+                }
+            }
+            document.getElementById("result").innerHTML = listSubStr;
         }
     </script>
 </body>
